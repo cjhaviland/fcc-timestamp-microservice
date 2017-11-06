@@ -5,7 +5,7 @@
 const express = require('express');
 const app = express();
 const router = express.Router();
-const helpers = '../helpers/date'
+const helpers = require(__dirname + '/helpers/date.js')
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
