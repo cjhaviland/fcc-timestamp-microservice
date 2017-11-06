@@ -18,8 +18,14 @@ app.get('/', function (req, res) {
 });
 
 app.get('/:date', (req, res) => {
-  let date = req.params.date
-  res.send(date)
+  let date = chrono.parse(req.params.date);
+  
+  if (date.length > 1){
+    res.send(date[0]);
+  }
+  else{
+    res.send({})
+  }
 });
 
 /*app.get("/dreams", function (request, response) {
