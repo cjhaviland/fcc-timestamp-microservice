@@ -4,8 +4,7 @@
 // init project
 const express = require('express');
 const app = express();
-const router = express.Router();
-const helpers = require('./helpers/date')
+const chrono = require('chrono-node')
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
@@ -14,13 +13,14 @@ const helpers = require('./helpers/date')
 app.use(express.static('public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
-router.route('/')
-  .get(helpers.mainView)
+app.get('/', function (req, res) {
+  res.sendFile(__dirname + '/views/index.html');
+});
 
-router.route('/:date')
-  .get(helpers.checkDate)
-
-module.exports = router;
+app.get('/:date', (req, res) => {
+  let date = req.params.date
+  res.send(date)
+});
 
 /*app.get("/dreams", function (request, response) {
   response.send(dreams);
