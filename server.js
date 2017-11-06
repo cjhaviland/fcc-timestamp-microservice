@@ -4,7 +4,10 @@
 // init project
 const express = require('express');
 const app = express();
+
+// https://github.com/wanasit/chrono
 const chrono = require('chrono-node')
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
@@ -23,7 +26,7 @@ app.get('/:date', (req, res) => {
   if (date){
     res.json({
       unix: chrono.parseDate(date).getTime(),
-      natural: chrono.parse(date)[0].start.date()
+      natural: parseDate(chrono.parse(date)[0])
     })
   }
   else{
@@ -52,3 +55,10 @@ var dreams = [
 var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
+
+function parseDate(date){
+  return months[date.start.knownValues.month - 1] + ' ' + 
+      date.start.knownValues.day + ', ' +
+      (date.start.knownValues.year ? date.start.knownValues.year : '');
+}
+
