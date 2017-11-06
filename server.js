@@ -25,12 +25,11 @@ app.get('/:date', (req, res) => {
   
   // If number passed, check if unix 1509999838869
   if (Number(date)){
-    let d = new Date(date);
-    console.log(d.toString());
-    
+    let d = new Date(Number(date));
+    console.log(d);
     res.json({
       unix: date,
-      natural: chrono.parseDate(d)
+      natural: chrono.parseDate('2017-11-06T20:23:58.869Z')
     })
   }
   else{
