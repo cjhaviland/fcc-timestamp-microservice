@@ -5,7 +5,7 @@
 const express = require('express');
 const app = express();
 const router = express.Router();
-const helpers = require(__dirname + '/helpers/date.js')
+const helpers = require('./helpers/date')
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
@@ -14,9 +14,8 @@ const helpers = require(__dirname + '/helpers/date.js')
 app.use(express.static('public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
-app.get("/", function (request, response) {
-  response.sendFile(__dirname + '/views/index.html');
-});
+router.route('/')
+  .get(helpers.mainView)
 
 router.route('/:date')
   .get(helpers.checkDate)
