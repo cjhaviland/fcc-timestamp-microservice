@@ -23,7 +23,7 @@ app.get('/', function (req, res) {
 app.get('/:date', (req, res) => {
   let date = req.params.date;
   
-  if (date){
+  if (Date(date)){
     res.json({
       unix: chrono.parseDate(date).getTime(),
       natural: parseDate(chrono.parse(date)[0])
@@ -58,7 +58,7 @@ var listener = app.listen(process.env.PORT, function () {
 
 function parseDate(date){
   return months[date.start.knownValues.month - 1] + ' ' + 
-      date.start.knownValues.day + ', ' +
-      (date.start.knownValues.year ? date.start.knownValues.year : '');
+      (date.start.knownValues.day ? date.start.knownValues.day : '') +
+      (date.start.knownValues.year ? ', ' + date.start.knownValues.year : '');
 }
 
