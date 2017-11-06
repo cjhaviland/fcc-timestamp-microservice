@@ -23,7 +23,7 @@ app.get('/', function (req, res) {
 app.get('/:date', (req, res) => {
   let date = req.params.date;
   
-  if (Date(date)){
+  if (date instanceof Date){
     res.json({
       unix: chrono.parseDate(date).getTime(),
       natural: parseDate(chrono.parse(date)[0])
