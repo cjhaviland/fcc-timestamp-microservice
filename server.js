@@ -18,10 +18,13 @@ app.get('/', function (req, res) {
 });
 
 app.get('/:date', (req, res) => {
-  let date = chrono.parse(req.params.date)[0];
+  let date = req.params.date;
   
   if (date){
-    res.json(date)
+    res.json({
+      unix: chrono.parseDate(date).getTime(),
+      natural: chrono.parse(date)[0].start.date()
+    })
   }
   else{
     res.json({})
