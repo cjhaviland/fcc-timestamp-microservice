@@ -21,7 +21,6 @@ app.get('/:date', (req, res) => {
   let date = chrono.parse(req.params.date)[0];
   
   if (date){
-    
     res.json(date)
   }
   else{
