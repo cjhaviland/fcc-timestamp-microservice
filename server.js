@@ -18,10 +18,10 @@ app.get('/', function (req, res) {
 });
 
 app.get('/:date', (req, res) => {
-  let date = chrono.parse(req.params.date);
+  let date = chrono.parse(req.params.date)[0];
   
-  if (date.length > 1){
-    res.send(date[0]);
+  if (date){
+    res.send(JSON.stringify(date.ref))
   }
   else{
     res.send({})
