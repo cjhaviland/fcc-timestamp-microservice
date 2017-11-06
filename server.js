@@ -23,11 +23,14 @@ app.get('/', function (req, res) {
 app.get('/:date', (req, res) => {
   let date = req.params.date;
   
-  // If number passed, check if unix
+  // If number passed, check if unix 1509999838869
   if (Number(date)){
+    let d = new Date(date);
+    console.log(d.toString());
+    
     res.json({
-      unix: Date.parse(date),
-      natural: chrono.parse(date)
+      unix: date,
+      natural: chrono.parseDate(d)
     })
   }
   else{
