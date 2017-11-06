@@ -33,9 +33,9 @@ app.get('/:date', (req, res) => {
   else{
     let chronoDate = chrono.parse(date)[0];
     
-    if (date){
+    if (chronoDate){
       res.json({
-      unix: chronoDate.start,
+      unix: chrono.parseDate(date).getTime(),
       natural: parseDate(chronoDate)
     })
     }
