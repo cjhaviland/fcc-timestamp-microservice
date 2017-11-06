@@ -5,7 +5,7 @@
 const express = require('express');
 const app = express();
 const router = express.Router();
-const helpers = '../helpers'
+const helpers = '../helpers/date'
 
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
@@ -18,11 +18,12 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-app.get('/:date', (req, res) => {
-  res.send(req.params.date);
-})
+router.route('/:date')
+  .get(helpers.checkDate)
 
-app.get("/dreams", function (request, response) {
+module.exports = router;
+
+/*app.get("/dreams", function (request, response) {
   response.send(dreams);
 });
 
@@ -37,7 +38,7 @@ var dreams = [
   "Find and count some sheep",
   "Climb a really tall mountain",
   "Wash the dishes"
-];
+];*/
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
