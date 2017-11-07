@@ -23,8 +23,8 @@ app.get('/', function (req, res) {
 app.get('/:date', (req, res) => {
   let unixDate = new Date(req.params.date);
   let natDate = chrono.parseDate(req.params.date);
-  
-  if (unixDate === null && natDate === null){
+  console.log(unixDate)
+  if (unixDate === "[object Date]" || natDate){
     res.json({});
   }
   else{
