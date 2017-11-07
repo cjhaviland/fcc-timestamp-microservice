@@ -22,15 +22,15 @@ app.get('/', function (req, res) {
 
 app.get('/:date', (req, res) => {
   let unixDate = new Date(req.params.date);
-  let natDate = chrono.parse(req.params.date);
+  let natDate = chrono.parseDate(req.params.date);
   
-  if (unixDate.isValid() === false && natDate === []){
+  if (unixDate.isValid() === false && natDate === null){
     res.json({});
   }
   else{
     res.json({
       unix: unixDate.getTime(),
-      natural: natDate
+      natural: parseDate(natDate)
     });
   }
 });
@@ -64,8 +64,6 @@ Date.prototype.isValid = function () {
 }; 
 
 function parseDate(date){
-  return months[date.start.knownValues.month - 1] + ' ' + 
-      (date.start.knownValues.day ? date.start.knownValues.day : '') +
-      (date.start.knownValues.year ? ', ' + date.start.knownValues.year : '');
+  return months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
 }
 
