@@ -22,17 +22,17 @@ app.get('/', function (req, res) {
 
 app.get('/:date', (req, res) => {
   let unixDate = new Date(req.params.date);
-  let natDate = chrono.parseDate(req.params.date);
+  let natDate = chrono.parse(req.params.date);
   
   console.log(unixDate + ' ' + natDate)
   
-  if (unixDate.isValid() === false && natDate === null){
+  if (unixDate.isValid() === false && natDate){
     res.json({});
   }
   else{
     res.json({
       unix: unixDate.getTime(),
-      natural: parseDate(natDate)
+      natural: natDate
     });
   }
 });
