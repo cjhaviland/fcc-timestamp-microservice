@@ -21,7 +21,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/:date', (req, res) => {
-  let unixDate = new Date(req.params.date);
+  let unixDate = new Date(Number(req.params.date));
   let natDate = chrono.parseDate(req.params.date);
   
   if (unixDate.isValid()) {
