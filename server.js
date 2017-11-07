@@ -24,6 +24,8 @@ app.get('/:date', (req, res) => {
   let dateString = req.params.date;
   let date = req.params.date;
   
+  let unixDate = 
+  
   // If number passed, check if unix
   if (Number(date)){
     res.json({
