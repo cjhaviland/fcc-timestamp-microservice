@@ -23,8 +23,10 @@ app.get('/', function (req, res) {
 app.get('/:date', (req, res) => {
   let unixDate = new Date(req.params.date);
   let natDate = chrono.parseDate(req.params.date);
-  console.log(unixDate)
-  if (unixDate === "[object Date]" || natDate){
+  
+  console.log(unixDate.isValid())
+  
+  if (unixDate.isValid() && natDate.isValid()){
     res.json({});
   }
   else{
@@ -56,6 +58,12 @@ var dreams = [
 var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
+
+Date.prototype.isValid = function () {
+    // An invalid date object returns NaN for getTime() and NaN is the only
+    // object not strictly equal to itself.
+    return this.getTime() === this.getTime();
+}; 
 
 function parseDate(date){
   return months[date.start.knownValues.month - 1] + ' ' + 
