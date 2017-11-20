@@ -8,6 +8,6 @@ A coding assignment from FreeCodeCamp to create a microservice that takes either
 4. Self-Inflicted Bonus: Used 3rd-Party library to allow valid natural language dates like "Today" or "Tomorrow"
 
 #### Chrono-node
-Original user stories asked you check if the parameter passed is UNIX or some form of English, but I wanted to go a step further. Found a third party library which accepts strings like 'Today' or 'Tomorrow' or 'December'
+Original user stories asked you check if the parameter passed is UNIX or some form of English, but I wanted to go a step further. Found a third party library which accepts strings like **today** or **tomorrow** or **December** as possible input.
 
 [FreeCodeCamp](https://www.freecodecamp.org)
